@@ -122,7 +122,6 @@ function EventClass:Wait()
 
 	self:Once(function(...)
 		coroutine.resume(currentThread, ...)
-		print('e')
 	end)
 
 	return coroutine.yield()
@@ -146,7 +145,7 @@ function EventClass:_Fire(...: any): ()
 		task.spawn(tempCallback, ...)
 	end
 
-    self.TemporaryCallbacks = {}
+	self.TemporaryCallbacks = {}
 end
 
 
