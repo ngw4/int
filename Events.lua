@@ -56,7 +56,8 @@ export type Event = {
 
 -- || VARIABLES
 
-local Event = {} :: Event
+local Event = {}
+local EventClass = {} :: Event
 local Connection = {} :: Connection
 
 -- || FUNCTIONS
@@ -87,7 +88,7 @@ end
     connects a function to the Event.
 ]]
 
-function Event:Connect(f: Callback): Connection
+function EventClass:Connect(f: Callback): Connection
 	table.insert(self.Callbacks, f)
 
 	return self:_newConnection(f)
@@ -102,7 +103,7 @@ end
     temporarily connects a function to the Event.
 ]]
 
-function Event:Once(f: Callback): Connection
+function EventClass:Once(f: Callback): Connection
 	table.insert(self.TemporaryCallbacks, f)
 
 	return self:_newConnection(f, true)
@@ -116,7 +117,7 @@ end
     waits for the event to be fired.
 ]]
 
-function Event:Wait()
+function EventClass:Wait()
 	local currentThread = coroutine.running()
 
 	self:Once(function(...)
@@ -135,7 +136,7 @@ end
     fires the event.
 ]]
 
-function Event:_Fire(...: any): ()
+function EventClass:_Fire(...: any): ()
 	for _, callback in self.Callbacks do
 		task.spawn(callback, ...)
 	end
@@ -156,7 +157,7 @@ end
     creates a new connection.
 ]]
 
-function Event:_newConnection(f: Callback, isTemporary: boolean?): Connection
+function EventClass:_newConnection(f: Callback, isTemporary: boolean?): Connection
 	local callbacks = if isTemporary then self.TemporaryCallbacks else self.Callbacks
 
 	local self = setmetatable({
