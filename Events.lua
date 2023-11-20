@@ -70,7 +70,7 @@ local Connection = {} :: Connection
 ]]--
 
 function Event.new(): Event
-	local self = setmetatable({}, {__index = Event})
+	local self = setmetatable({}, {__index = EventClass})
 
 	self.Connections = {}
 	self.Callbacks = {}
