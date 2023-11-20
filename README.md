@@ -14,7 +14,7 @@ end)
 
 event:Once(function(arg)
   print("recieved" .. tostring(arg))
-)
+end)
 
 task.delay(3, function()
   event:_Fire(12)
