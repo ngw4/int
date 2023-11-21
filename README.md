@@ -2,7 +2,7 @@
 A simple module made to replicate RBXScriptSignals without the use of Instances.
 
 # Usage
-> A short demonstration of how this module could be used.
+> A short demo on how to use this module.
 ```lua
 -- Require the module.
 local Event = require(path)
