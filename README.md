@@ -11,13 +11,13 @@ local Event = require(path)
 local event = Event.new()
 
 -- Connect a function to run when the event is fired.
-event:Connect(function()
-  print("Event fired.")
+event:Connect(function(arg: any)
+  print("Recieved" .. tostring(arg))
 end)
 
 -- Temporarily connect a function to the event.
-event:Once(function(arg)
-  print("recieved" .. tostring(arg))
+event:Once(function(arg: any)
+  print("Recieved" .. tostring(arg))
 end)
 
 -- Create a new thread to fire the event after 3 seconds. (task.spawn is exclusive to the Roblox game engine.)
@@ -27,5 +27,7 @@ task.delay(3, function()
 end)
 
 -- Yields the script until the event has fired.
-event:Wait()
+local arg = event:Wait()
+
+print("Event fired, finished yielding. \n Recieved:" .. arg)
 ```
