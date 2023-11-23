@@ -6,4 +6,4 @@ InstanceRedux is a module designed to replace the need of instances in your code
 * Events
 
 # To Be Added
-* Tools,
+* Tools
