@@ -1,5 +1,5 @@
-# InstanceRedux
-InstanceRedux is a module designed to replace the need of instances in your code. 
+# INT
+INT is a module designed to replace the need of instances in your code. 
 
 # Includes
 * Values
