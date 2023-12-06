@@ -47,8 +47,8 @@ local ValueClass = {} :: Value
     @param      value        any       | the data you want to initialize with.
     @return     Value
 
-	Creates a new Value.
-]]
+    Creates a new Value.
+]]--
 
 function Value.new(value: any): Value
 	local self = setmetatable({
@@ -64,8 +64,8 @@ end
     @param      self        Value       | The value itself.
     @return     any
 
-	Retrieves the value.
-]]
+    Retrieves the value.
+]]--	
 
 function ValueClass.__index(self: Value, key: string)
 	if key ~= "Value" then return end
@@ -79,8 +79,8 @@ end
     @param      value       any			| the value which is being set.
     @return     any
 
-	Sets the value.
-]]
+    Sets the value.
+]]--
 
 function ValueClass.__newindex(self: Value, key: string, value: any)
 	if key ~= "Value" then return end 
